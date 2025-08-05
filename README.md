@@ -1,81 +1,151 @@
-<h1 align="center"> Qubika Technical Challenge - QA Automation </h1> <br>
+### Qubika Technical Challenge - QA Automation
 
-<p align="center">
-  This repository contains the solution for the Qubika QA Technical Challenge, which automates a user creation and category management flow using Playwright.
-
-  Author: Juan Andrés Ledesma
-  Date: AGO, 2025
-</p>
-
+```
+This repository contains the solution for the Qubika QA Technical Challenge, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
+```
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Project Setup](#Project_Setup)
-- [Features](#features)
-- [Requirements](#requirements)
+- [Dependancies and Configuration](#Dependancies)
+- [How to Run the Tests](#How_To_Run_the_Tests]
+- [Test Implementation](#Test_Implementation)
+- [Additional Observations (Bugs)] 
 
 
 ## Introduction
 
-Welcome to our coding challenge! This challenge has been designed to test your coding skills and problem-solving abilities. This challenge is a great way to push yourself and learn new things. The challenge will test your technology stack skills and your ability to solve problems. Good luck, and have fun!
+This project addresses the Qubika Technical Challenge, focusing on automating a specific workflow on the Qubika Sports Club management website. The solution leverages Playwright with JavaScript to perform an end-to-end (e2e) test, covering both UI interactions and considerations for API integration. The test suite is designed to execute across multiple browsers, including Chromium and Firefox, as per the challenge requirements.
+
+# The automated workflow includes the following steps:
+
+1. Attempt to create a new user through API and save the user information.
+
+2. Navigate to the Qubika Sports Club Management System login page.
+
+3. Validate that the login page is displayed correctly, including necessary UI elements.
+
+4. Log in with the created or existing test user.
+
+5. Validate that the user is successfully logged in to the system.
+
+6. Once logged in:
+  1. Go to the Category page.
+  2. Create a new category and validate its successful creation.
+  3. Create a sub-category and validate it is displayed in the Categories list, correctly associated with its parent.
 
 ## Project_Setup
+
 The project was set up using Playwright Test with JavaScript to fulfill the requirements of the automation challenge.
 
-1.1. System Requirements
-Node.js: The project requires a Node.js version of 20, 22 or 24.
+# System Requirements
+  _ Node.js: The project requires a Node.js **version of 20, 22, or 24.**
+  _ Verification: To check your Node.js version, run in your terminal:
+  ```
+  node --version
+  ```
+# Playwright Installation
+The project was initialized using the ```npm init playwright@latest``` command. During installation, Playwright browsers (Chromium, Firefox, WebKit) were installed to meet the multi-browser execution requirement.
 
-Verification: To check your Node.js version, run node --version in your terminal.
 
-1.2. Playwright Installation
-The project was initialized using the npm init playwright@latest command. The Playwright browsers (Chromium, Firefox, WebKit) were installed to meet the multi-browser requirement.
+## Dependencies and Configuration
 
-2. Dependencies and Configuration
-2.1. Installing Dependencies
-To run the tests correctly, the dotenv package is required. From the project's root, execute the following command in your terminal:
+# Installing Dependencies
+To run the tests correctly, the **dotenv** package is required for environment variable management. From the project's root, execute the following command in your terminal:
+  ```
+  npm install dotenv
+  ```
 
-npm install dotenv
+# Setting Up Environment Variables
+Create a file named **.env** in the root of the project and add the following variables for the test credentials. <ins>This file is excluded from version control via .gitignore for security.</ins>
 
-2.2. Setting Up Environment Variables
-Create a file named .env in the root of the project and add the following variables for the test credentials:
+  ```
+  - Application URLs
+  BASE_URL=https://club-administration.qa.qubika.com
 
-- Application URLs
-BASE_URL=https://club-administration.qa.qubika.com
+  - Test User Credentials
+  TEST_EMAIL=test.qubika@qubika.com
+  TEST_PASSWORD=12345678
+  ```
 
-- Test User Credentials
-TEST_EMAIL=test.qubika@qubika.com
-TEST_PASSWORD=12345678
-
-3. How to Run the Tests
+## How to Run the Tests
 Once the dependencies are installed and the environment variables are configured, you can run the tests with the command:
+  ```
+  npx playwright test
+  ```
 
-npx playwright test
+<ins>This command will run the tests in all three configured browsers.</ins>
 
-This command will run the tests in all three configured browsers.
-
-4. Test Implementation
+## Test Implementation
 The automation solution focuses on a complete end-to-end UI flow to:
 
-Log in with the provided user.
+1. Log in with the provided user.
 
-Navigate to the Categories page.
+2. Navigate to the Categories page.
 
-Create a main category with a unique name.
+3. Create a main category with a unique name.
 
-Create a sub-category, correctly associating it with the main category.
+4. Create a sub-category, correctly associating it with the main category.
 
-Validate the successful creation of both categories in the UI.
+5. Validate the successful creation of both categories in the UI.
 
-Adaptation: The test was adapted to use an existing test user due to a permission issue encountered when attempting to create a new user via the API. This demonstrates problem-solving by focusing on the functional UI flow of the challenge.
+# Adaptation for User Creation API:
+The initial requirement included creating a new user through the API. However, during testing, it was found that the provided test user (test.qubika@qubika.com) does not possess the necessary permissions to create new users via the /api/users endpoint (specifically, the /api/auth/register endpoint resulted in a 401 Unauthorized error). Therefore, the test was adapted to proceed with logging in using the existing, valid test user for the UI flow, demonstrating problem-solving and adaptability in automation strategy.
 
-5. Additional Observations
+~~~
+POST: https://api.club-administration.qa.qubika.com/api/member/create
+
+{
+    "title": "Unauthorized",
+    "status": 401,
+    "detail": "Full authentication is required to access this resource",
+    "path": "/api/member/create",
+    "message": "error.http.401"
+}
+~~~
+
+# Expected Test Execution Output:
+Upon successful execution, the console output will indicate that all 3 tests have passed across Chromium, Firefox, and WebKit, confirming the end-to-end flow works as expected in a multi-browser environment. An example of a successful run output is:
+
+~~~
+192:Playwright user$ npx playwright test tests/Qubika.spec.js
+[dotenv@17.2.1] injecting env (3) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+Running 3 tests using 3 workers
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[chromium] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully logged in to the Qubika Sports Club management.
+Successfully navigated to the Category page.
+Successfully created Category: Cat_JALR_1754436778663
+[webkit] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully logged in to the Qubika Sports Club management.
+Successfully navigated to the Category page.
+[chromium] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully created Sub-Category: Sub-Cat_JALR_1754436780213 on Category: Cat_JALR_1754436778663
+[firefox] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully logged in to the Qubika Sports Club management.
+Successfully navigated to the Category page.
+[webkit] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully created Category: Cat_JALR_1754436783185
+[firefox] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully created Category: Cat_JALR_1754436784124
+[webkit] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully created Sub-Category: Sub-Cat_JALR_1754436785223 on Category: Cat_JALR_1754436783185
+[firefox] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
+Successfully created Sub-Category: Sub-Cat_JALR_1754436786536 on Category: Cat_JALR_1754436784124
+  3 passed (19.4s)
+
+~~~
+
+![Multibrowser execution](images/MultiBrowserExecution.png)
+
+![Step by step execution](images/ExecutionReport.png)
+
+
+## Additional Observations
 During the test, the following application issues were noted:
 
-Console Error (CSP Violation): A Content Security Policy error was observed in the console, indicating a bug in how the application loads success icons.
 
-Console Error (Google Maps API): A warning was logged for an InvalidKey for the Google Maps API, which points to a misconfiguration.
-
-Autofocus Error: A console warning indicated that an element was blocked from autofocusing, suggesting a potential UI bug.
-
-These findings show the value of automation in detecting non-functional bugs that could be missed during manual testing, fulfilling the requirements of the exploratory testing exercise.
