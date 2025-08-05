@@ -1,0 +1,9 @@
+# Dependency directory
+node_modules/
+
+# Playwright Test results and reports
+/test-results/
+/playwright-report/
+
+# Environment variables
+.env
