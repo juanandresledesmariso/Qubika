@@ -1,17 +1,17 @@
 # Qubika Technical Challenge - QA Automation
 
-```
-This repository contains the solution for the Qubika QA Technical Challenge, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
-```
+  ~~~
+  This repository contains the solution for the Qubika QA Technical Challenge, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
+  ~~~
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Project Setup](#Project_Setup)
 - [Dependancies and Configuration](#Dependancies)
-- [How to Run the Tests](#How_To_Run_the_Tests]
-- [Test Implementation](#Test_Implementation)
-- [Additional Observations (Bugs)] 
+- [How to Run the Tests](#How]
+- [Test Implementation](#Test)
+- [Additional Observations (Bugs)](#Additional)
 
 
 ## Introduction
@@ -35,19 +35,20 @@ This project addresses the Qubika Technical Challenge, focusing on automating a 
   2. Create a new category and validate its successful creation.
   3. Create a sub-category and validate it is displayed in the Categories list, correctly associated with its parent.
 
-## Project_Setup
+## Project Setup
 
 The project was set up using Playwright Test with JavaScript to fulfill the requirements of the automation challenge.
 
 ### System Requirements
   _ Node.js: The project requires a Node.js **version of 20, 22, or 24.**
+
   _ Verification: To check your Node.js version, run in your terminal:
-  ```
-  node --version
-  ```
+  ~~~
+    node --version
+  ~~~
+
 ### Playwright Installation
 The project was initialized using the ```npm init playwright@latest``` command. During installation, Playwright browsers (Chromium, Firefox, WebKit) were installed to meet the multi-browser execution requirement.
-
 
 ## Dependencies and Configuration
 
@@ -69,7 +70,7 @@ Create a file named **.env** in the root of the project and add the following va
   TEST_PASSWORD=12345678
   ```
 
-## How to Run the Tests
+## How_To_Run_the_Tests
 Once the dependencies are installed and the environment variables are configured, you can run the tests with the command:
   ```
   npx playwright test
@@ -93,9 +94,9 @@ The automation solution focuses on a complete end-to-end UI flow to:
 ### Adaptation for User Creation API:
 The initial requirement included creating a new user through the API. However, during testing, it was found that the provided test user (test.qubika@qubika.com) does not possess the necessary permissions to create new users via the /api/users endpoint (specifically, the /api/auth/register endpoint resulted in a 401 Unauthorized error). Therefore, the test was adapted to proceed with logging in using the existing, valid test user for the UI flow, demonstrating problem-solving and adaptability in automation strategy.
 
-~~~
-POST: https://api.club-administration.qa.qubika.com/api/member/create
+![api-member-create](images/API-Member_Create.png)
 
+~~~
 {
     "title": "Unauthorized",
     "status": 401,
