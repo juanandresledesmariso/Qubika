@@ -1,4 +1,4 @@
-### Qubika Technical Challenge - QA Automation
+# Qubika Technical Challenge - QA Automation
 
 ```
 This repository contains the solution for the Qubika QA Technical Challenge, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
@@ -18,7 +18,7 @@ This repository contains the solution for the Qubika QA Technical Challenge, whi
 
 This project addresses the Qubika Technical Challenge, focusing on automating a specific workflow on the Qubika Sports Club management website. The solution leverages Playwright with JavaScript to perform an end-to-end (e2e) test, covering both UI interactions and considerations for API integration. The test suite is designed to execute across multiple browsers, including Chromium and Firefox, as per the challenge requirements.
 
-# The automated workflow includes the following steps:
+### The automated workflow includes the following steps:
 
 1. Attempt to create a new user through API and save the user information.
 
@@ -39,25 +39,25 @@ This project addresses the Qubika Technical Challenge, focusing on automating a 
 
 The project was set up using Playwright Test with JavaScript to fulfill the requirements of the automation challenge.
 
-# System Requirements
+### System Requirements
   _ Node.js: The project requires a Node.js **version of 20, 22, or 24.**
   _ Verification: To check your Node.js version, run in your terminal:
   ```
   node --version
   ```
-# Playwright Installation
+### Playwright Installation
 The project was initialized using the ```npm init playwright@latest``` command. During installation, Playwright browsers (Chromium, Firefox, WebKit) were installed to meet the multi-browser execution requirement.
 
 
 ## Dependencies and Configuration
 
-# Installing Dependencies
+### Installing Dependencies
 To run the tests correctly, the **dotenv** package is required for environment variable management. From the project's root, execute the following command in your terminal:
   ```
   npm install dotenv
   ```
 
-# Setting Up Environment Variables
+### Setting Up Environment Variables
 Create a file named **.env** in the root of the project and add the following variables for the test credentials. <ins>This file is excluded from version control via .gitignore for security.</ins>
 
   ```
@@ -90,7 +90,7 @@ The automation solution focuses on a complete end-to-end UI flow to:
 
 5. Validate the successful creation of both categories in the UI.
 
-# Adaptation for User Creation API:
+### Adaptation for User Creation API:
 The initial requirement included creating a new user through the API. However, during testing, it was found that the provided test user (test.qubika@qubika.com) does not possess the necessary permissions to create new users via the /api/users endpoint (specifically, the /api/auth/register endpoint resulted in a 401 Unauthorized error). Therefore, the test was adapted to proceed with logging in using the existing, valid test user for the UI flow, demonstrating problem-solving and adaptability in automation strategy.
 
 ~~~
