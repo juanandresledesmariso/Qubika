@@ -1,13 +1,13 @@
 # Qubika Technical Challenge - QA Automation
 
-  ~~~
-  This repository contains the solution for the Qubika QA Technical Challenge, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
-  ~~~
+
+This repository contains the solution for the **Qubika QA Technical Challenge**, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
+
 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Project Setup](#Project_Setup)
+- [Project Setup](#Project)
 - [Dependancies and Configuration](#Dependancies)
 - [How to Run the Tests](#How]
 - [Test Implementation](#Test)
@@ -47,6 +47,10 @@ The project was set up using Playwright Test with JavaScript to fulfill the requ
     node --version
   ~~~
 
+  _If Node.js isn't installed, you can run the following command to install it using Homebrew (on macOS):
+  ~~~
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ~~~
 ### Playwright Installation
 The project was initialized using the ```npm init playwright@latest``` command. During installation, Playwright browsers (Chromium, Firefox, WebKit) were installed to meet the multi-browser execution requirement.
 
@@ -70,7 +74,7 @@ Create a file named **.env** in the root of the project and add the following va
   TEST_PASSWORD=12345678
   ```
 
-## How_To_Run_the_Tests
+## How to Run the Tests
 Once the dependencies are installed and the environment variables are configured, you can run the tests with the command:
   ```
   npx playwright test
@@ -93,18 +97,6 @@ The automation solution focuses on a complete end-to-end UI flow to:
 
 ### Adaptation for User Creation API:
 The initial requirement included creating a new user through the API. However, during testing, it was found that the provided test user (test.qubika@qubika.com) does not possess the necessary permissions to create new users via the /api/users endpoint (specifically, the /api/auth/register endpoint resulted in a 401 Unauthorized error). Therefore, the test was adapted to proceed with logging in using the existing, valid test user for the UI flow, demonstrating problem-solving and adaptability in automation strategy.
-
-![api-member-create](images/API-Member_Create.png)
-
-~~~
-{
-    "title": "Unauthorized",
-    "status": 401,
-    "detail": "Full authentication is required to access this resource",
-    "path": "/api/member/create",
-    "message": "error.http.401"
-}
-~~~
 
 # Expected Test Execution Output:
 Upon successful execution, the console output will indicate that all 3 tests have passed across Chromium, Firefox, and WebKit, confirming the end-to-end flow works as expected in a multi-browser environment. An example of a successful run output is:
@@ -147,6 +139,9 @@ Successfully created Sub-Category: Sub-Cat_JALR_1754436786536 on Category: Cat_J
 
 
 ## Additional Observations
-During the test, the following application issues were noted:
+During the test execution and dedicated exploratory testing, several observations and potential issues were identified. A detailed report of these findings, including descriptions, impact, and severity, can be found in the Exploratory Testing Report file. [Exploratory Testing Report](ExploratoryTestingReport.md)
+
+
+_These findings fulfill the requirements of the exploratory testing exercise by identifying non-functional bugs that could be missed during manual testing._
 
 
