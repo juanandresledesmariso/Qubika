@@ -69,7 +69,7 @@ Evidence:
 
 _Console Observations_
 
-**Error: Content Security Policy (CSP) Violation**
+1. **Error: Content Security Policy (CSP) Violation**
 
 Description: The browser's console displayed Content Security Policy errors. Specifically, the application attempts to load success icons (data:image/svg+xml) after certain actions (e.g., successful category creation), but the server's security policy prevents these inline SVG images from loading due to restrictions on data: URIs.
 
@@ -78,6 +78,16 @@ Impact: This is primarily a visual bug, as the success message appears, but the 
 Severity: *Low* (Functional impact is minimal, but affects user experience and indicates a security configuration oversight that could be tightened or fixed).
 
 ![SecurityPolicy](images/SecurityPolicy.png)
+
+2. **Warning: Google Maps API Invalid Key**
+
+Description: A warning was logged in the console stating Google Maps JavaScript API warning: InvalidKey. This indicates that the Google Maps API, if used by the application, is either missing a valid API key or is configured incorrectly.
+
+Impact: Potential impact on any map-related functionalities within the application. If maps are used for features like location selection, displaying club branches, or event mapping, they might not display or function as intended, leading to a degraded user experience.
+
+Severity: **Medium** (Depends on the criticality of map features)
+
+![MapsInvalidKey](images/MapsInvalidKey.png)
 
 ## Suggestions for Improvement
 
