@@ -2,6 +2,8 @@
 
 This report details the issues and suggestions for improvement identified during the exploratory testing phase of the **Qubika Sports Club Management** project. The testing was conducted with a focus on UI, UX, styles, API, and security aspects, aiming to ensure the system's optimal condition.
 
+Author: _Juan Andrés Ledesma, Ago-2025._
+
 ## Identified Issues
 
 ### API Observations
@@ -98,3 +100,5 @@ Description: During all testing phases, it was observed that the application ses
 Suggestion: Implement a configurable session timeout mechanism. After a period of inactivity, the user should be automatically logged out for security reasons. A warning message could be displayed a few minutes before the session expires, giving the user an option to extend it.
 
 Benefit: Enhances security by reducing the risk of unauthorized access if a user leaves their session unattended. Improves compliance with security best practices and provides a more secure user experience.
+
+

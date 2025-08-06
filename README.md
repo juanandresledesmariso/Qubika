@@ -1,15 +1,15 @@
 # Qubika Technical Challenge - QA Automation
 
-
 This repository contains the solution for the **Qubika QA Technical Challenge**, which automates an e2e flow where a Category and a Sub-Category is created on Qubika Sports Club management website.
 
+Author: _Juan Andrés Ledesma, Ago-2025._
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Project Setup](#Project)
 - [Dependancies and Configuration](#Dependancies)
-- [How to Run the Tests](#How]
+- [How to Run the Tests](#How_to_Run]
 - [Test Implementation](#Test)
 - [Additional Observations (Bugs)](#Additional)
 
@@ -103,12 +103,9 @@ Upon successful execution, the console output will indicate that all 3 tests hav
 
 ~~~
 192:Playwright user$ npx playwright test tests/Qubika.spec.js
-[dotenv@17.2.1] injecting env (3) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[dotenv@17.2.1] injecting env (3) from .env
 
 Running 3 tests using 3 workers
-[dotenv@17.2.1] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
-[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
-[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
 [chromium] › tests/Qubika.spec.js:30:1 › should create a new Category and SubCategory
 Successfully logged in to the Qubika Sports Club management.
 Successfully navigated to the Category page.
