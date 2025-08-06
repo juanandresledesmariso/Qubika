@@ -2,7 +2,7 @@
 
 This report details the issues and suggestions for improvement identified during the exploratory testing phase of the **Qubika Sports Club Management** project. The testing was conducted with a focus on UI, UX, styles, API, and security aspects, aiming to ensure the system's optimal condition.
 
-## Identified Issues and Observations
+## Identified Issues
 
 ### API Observations
 
@@ -37,8 +37,6 @@ Evidence:
 1. Issue: Export Action Fails in Reports Section
 
 Description: In the "Reportes" (Reports) section, after filtering data by a specific month (e.g., August 2025) and then clicking the "Export" button, no action is performed. The application does not download a file, display an error, or provide any feedback to the user.
-
-Technical Details: The browser console shows a GET request to https://api.club-administration.qa.qubika.com/api/contribution/export/excel/8/2025 returning a 500 (Internal Server Error). This indicates a server-side issue during the report generation or export process.
 
 Impact: Prevents users from exporting critical report data, hindering data analysis and record-keeping.
 
@@ -80,3 +78,13 @@ Impact: This is primarily a visual bug, as the success message appears, but the 
 Severity: *Low* (Functional impact is minimal, but affects user experience and indicates a security configuration oversight that could be tightened or fixed).
 
 ![SecurityPolicy](images/SecurityPolicy.png)
+
+## Suggestions for Improvement
+
+**Improvement: Implement Session Timeout**
+
+Description: During all testing phases, it was observed that the application session does not appear to have an automatic timeout. Users remain logged in indefinitely unless they explicitly log out. This poses a security risk, especially in shared environments.
+
+Suggestion: Implement a configurable session timeout mechanism. After a period of inactivity, the user should be automatically logged out for security reasons. A warning message could be displayed a few minutes before the session expires, giving the user an option to extend it.
+
+Benefit: Enhances security by reducing the risk of unauthorized access if a user leaves their session unattended. Improves compliance with security best practices and provides a more secure user experience.
